@@ -14,9 +14,11 @@ fn get_scores(schedule: Schedule) -> Vec<String> {
 
 pub fn execute(command: &str, args: Vec<&str>) -> Result<Vec<String>, &'static str> {
     if command == "help" {
-        let mut msg = vec!["The following commands are available:".to_string()];
-        msg.push("Get full schedule of games: scores|games [yesterday|tomorrow|$y-$m-$d]".to_string());
-        msg.push("Get schedule of games that match keywords: score|game [keywords...]".to_string());
+        let msg = vec![
+            "The following commands are available:".to_string(),
+            "Get full schedule of games: scores|games [yesterday|tomorrow|$y-$m-$d]".to_string(),
+            "Get schedule of games that match keywords: score|game [keywords...]".to_string()
+        ];
         return Ok(msg);
     }
 
