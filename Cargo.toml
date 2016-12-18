@@ -1,0 +1,12 @@
+[package]
+name = "nhl-irc-bot"
+version = "0.1.0"
+authors = ["Anthony Calandra <anthony@anthony-calandra.com>"]
+
+[dependencies]
+serde = "0.8"
+serde_json = "0.8"
+irc = "0.11"
+curl = "0.4"
+chrono = "0.2"
+regex = "0.1"
