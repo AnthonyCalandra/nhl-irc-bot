@@ -59,7 +59,7 @@ impl Schedule {
         // Now, from the first date object in the array, get the games array.
         let games_v: &Value = date.get("games").unwrap();
         // Map through each game scheduled and create a Game from the data.
-        let games: Vec<Game> = games_v.as_array().unwrap().iter().map(|game_v| {
+        let mut games: Vec<Game> = games_v.as_array().unwrap().iter().map(|game_v| {
             let game: &Map<String, Value> = game_v.as_object().unwrap();
 
             let teams: &Map<String, Value> = game.get("teams").unwrap().as_object().unwrap();
@@ -85,6 +85,7 @@ impl Schedule {
 
             Game::new(home_team, home_goals, away_team, away_goals, status_code)
         }).collect();
+        games.sort();
         Schedule { date: today_date, num_games: num_games, games: games }
     }
 }

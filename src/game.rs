@@ -1,9 +1,24 @@
+use std::cmp::Ordering;
+
+#[derive(Eq, PartialEq, PartialOrd)]
 pub struct Game {
     home_team: String,
     home_goals: i32,
     away_team: String,
     away_goals: i32,
     status_code: i32,
+}
+
+impl Ord for Game {
+    fn cmp(&self, other: &Game) -> Ordering {
+        if self.status_code > other.status_code {
+            Ordering::Greater
+        } else if self.status_code < other.status_code {
+            Ordering::Less
+        } else {
+            Ordering::Equal
+        }
+    }
 }
 
 impl Game {
@@ -46,7 +61,7 @@ impl Game {
     fn status_string(&self) -> &str {
         match self.status_code {
             7 | 6 => "FINAL",
-            3 => "LIVE",
+            4 | 3 => "LIVE",
             _ => "SCHEDULED"
         }
     }
