@@ -47,7 +47,7 @@ impl Game {
                 true => format!("\x0309{}\x03", away), // light green
                 _ => format!("\x0304{}\x03", away) // red
             };
-        } else if self.status_code == 3 {
+        } else if self.status_code == 4 || self.status_code == 3 {
             home_str = format!("\x0308{}\x03", home); // yellow
             away_str = format!("\x0308{}\x03", away); // yellow
         } else {
